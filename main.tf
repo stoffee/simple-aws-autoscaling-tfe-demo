@@ -32,7 +32,7 @@ resource "aws_autoscaling_group" "demo-ag" {
     version = "$$Latest"
   }
 
-tag [
+tags [
   {
     key                 = "Owner"
     value               = "stoffee"
@@ -41,6 +41,6 @@ tag [
     key                 = "TTL"
     value               = "15m"
     propagate_at_launch = true
-  }
+  },
   ]
 }
