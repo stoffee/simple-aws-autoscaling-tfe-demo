@@ -43,8 +43,8 @@ resource "aws_autoscaling_group" "demo-ag" {
 }
 EOF
 
-    notification_target_arn = "arn:aws:sqs:us-west-2:444455556666:queue1*"
-    role_arn                = "arn:aws:iam::123456789012:role/S3Access"
+    notification_target_arn = "arn:aws:sqs:us-west-2:347318413499:simple-aws-autoscaling-tfe-demo*"
+    role_arn                = "arn:aws:iam::347318413499:user/terraform"
   }
 
   timeouts {
