@@ -41,6 +41,5 @@ tags [
     key                 = "TTL"
     value               = "15m"
     propagate_at_launch = true
-  },
-  ]
+  }]
 }
