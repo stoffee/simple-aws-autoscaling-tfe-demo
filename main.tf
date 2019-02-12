@@ -31,4 +31,10 @@ resource "aws_autoscaling_group" "demo-ag" {
     id      = "${aws_launch_template.demo-lt.id}"
     version = "$$Latest"
   }
+
+tag {
+    key                 = "Owner"
+    value               = "stoffee"
+    propagate_at_launch = true
+  }
 }
