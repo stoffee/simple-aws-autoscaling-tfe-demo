@@ -14,7 +14,7 @@ variable "aws_secret_key" {
 
 resource "aws_launch_template" "demo-lt" {
   name_prefix   = "demo-"
-  image_id      = "ami-076b01046426fd1c5"
+  image_name    = "cd-nomad-1549061933"
   instance_type = "t2.micro"
 }
 
