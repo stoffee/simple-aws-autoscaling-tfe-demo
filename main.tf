@@ -28,8 +28,7 @@ resource "aws_autoscaling_group" "demo-ag" {
   
 
   launch_template {
-   # id      = "${aws_launch_template.demo-lt.id}"
-    id      = "simple-aws-autoscaling-tfe-demo"
+    id      = "${aws_launch_template.demo-lt.id}"
     version = "$$Latest"
   }
   initial_lifecycle_hook {
