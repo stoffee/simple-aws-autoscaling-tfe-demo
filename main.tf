@@ -32,7 +32,7 @@ resource "aws_autoscaling_group" "demo-ag" {
     version = "$$Latest"
   }
   initial_lifecycle_hook {
-    name                 = "foobar"
+    name                 = "IsBrokeNo"
     default_result       = "CONTINUE"
     heartbeat_timeout    = 2000
     lifecycle_transition = "autoscaling:EC2_INSTANCE_LAUNCHING"
@@ -47,12 +47,6 @@ EOF
     role_arn                = "arn:aws:iam::123456789012:role/S3Access"
   }
 
-  tag {
-    key                 = "broke"
-    value               = "true"
-    propagate_at_launch = true
-  }
-
   timeouts {
     delete = "15m"
   }
@@ -65,6 +59,10 @@ tags = [
   },{
     key                 = "TTL"
     value               = "15m"
+    propagate_at_launch = true
+  },{
+    key                 = "broke"
+    value               = "true"
     propagate_at_launch = true
   }]
 }
