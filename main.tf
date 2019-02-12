@@ -20,9 +20,12 @@ resource "aws_launch_template" "demo-lt" {
 
 resource "aws_autoscaling_group" "demo-ag" {
   availability_zones = ["us-west-2a"]
-  desired_capacity   = 1
-  max_size           = 1
-  min_size           = 1
+  desired_capacity   = 3
+  max_size           = 5
+  min_size           = 2
+  health_check_grace_period = 300
+  health_check_type         = "ELB"
+  
 
   launch_template {
     id      = "${aws_launch_template.demo-lt.id}"
