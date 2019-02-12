@@ -14,7 +14,7 @@ variable "aws_secret_key" {
 
 resource "aws_launch_template" "demo-lt" {
   name_prefix   = "demo-"
-  image_name    = "cd-nomad-1549061933"
+  image_id      = "ami-076b01046426fd1c5"
   instance_type = "t2.micro"
 }
 
@@ -28,7 +28,8 @@ resource "aws_autoscaling_group" "demo-ag" {
   
 
   launch_template {
-    id      = "${aws_launch_template.demo-lt.id}"
+   # id      = "${aws_launch_template.demo-lt.id}"
+    id      = "simple-aws-autoscaling-tfe-demo"
     version = "$$Latest"
   }
   initial_lifecycle_hook {
