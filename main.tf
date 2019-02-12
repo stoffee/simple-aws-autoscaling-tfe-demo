@@ -31,6 +31,31 @@ resource "aws_autoscaling_group" "demo-ag" {
     id      = "${aws_launch_template.demo-lt.id}"
     version = "$$Latest"
   }
+  initial_lifecycle_hook {
+    name                 = "foobar"
+    default_result       = "CONTINUE"
+    heartbeat_timeout    = 2000
+    lifecycle_transition = "autoscaling:EC2_INSTANCE_LAUNCHING"
+
+    notification_metadata = <<EOF
+{
+  "broke": "true"
+}
+EOF
+
+    notification_target_arn = "arn:aws:sqs:us-west-2:444455556666:queue1*"
+    role_arn                = "arn:aws:iam::123456789012:role/S3Access"
+  }
+
+  tag {
+    key                 = "broke"
+    value               = "true"
+    propagate_at_launch = true
+  }
+
+  timeouts {
+    delete = "15m"
+  }
 
 tags = [
   {
