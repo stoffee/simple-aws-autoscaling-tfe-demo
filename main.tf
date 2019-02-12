@@ -39,11 +39,11 @@ resource "aws_autoscaling_group" "demo-ag" {
 
     notification_metadata = <<EOF
 {
-  "broke": "true"
+  "broke": "no"
 }
 EOF
 
-    notification_target_arn = "arn:aws:sqs:us-west-2:347318413499:simple-aws-autoscaling-tfe-demo*"
+    notification_target_arn = "arn:aws:sqs:us-west-2:347318413499:simple-aws-autoscaling-tfe-demo"
     role_arn                = "arn:aws:iam::347318413499:user/terraform"
   }
 
@@ -62,7 +62,7 @@ tags = [
     propagate_at_launch = true
   },{
     key                 = "broke"
-    value               = "true"
+    value               = "no"
     propagate_at_launch = true
   }]
 }
